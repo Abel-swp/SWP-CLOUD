@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- member -->
+<mapper namespace="member.model.Member">
+	<insert id="insertData">
+		insert into email(email,name,nickname,password)
+		values(#{email},#{name},#{nickname},#{password})
+	</insert>
+	
+	<select id="selectEmail" resultType="MyMember">
+		select Email from email
+	</select>
+	
+	<select id="getData" resultType="MyMember">
+		select * from email
+		where email = #{inputEmail}
+	</select>
+	<select id="getNickname" resultType="MyMember">
+		select * from email
+		where nickname = #{nickname}
+	</select>
+	<update id="updateType">
+		update email set type = #{type}
+		where email = #{email}
+	</update>
+	
+	<select id="getList" resultType="MyMember">
+		select * from cat
+		where email = #{email}
+	</select>
+	
+	<select id="getInfo" resultType="MyMember">
+		select * from email
+		where email = #{email}
+		and name = #{name}
+	</select>
+	<select id="getByOrderList" resultType="MyBuy">
+		select * from buy where nickname = #{nick}
+	</select>
+	
+	<select id="getAmount" resultType="MyBuy">
+		select sum from buy where snickname = #{nick}
+	</select>
+	
+	<select id="GetListByNick" resultType="MyBoard">
+		select * from board where nickname = #{nick}
+	</select>
+</mapper>
+<!-- album.xml mapper 화일 (DAO 역할)
+member.xml
+product.xml
+~는 생략 가능
+resultType ~꼭 써야되고, ~쓰면 절대 안된다.
+parameterType:써도되고 안써도 됨
+resultType : select 에서는 반드시 써야함 insert,update,delete는 절대 쓰면 안된다
+-->
+
+
+
+
+
+
+
